@@ -10,5 +10,5 @@ admin = User.create(
   name: 'admin',
   email: 'admin@example.com',
   password: '123456789',
-  admin: true
+  is_admin: true
 )

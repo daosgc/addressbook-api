@@ -28,8 +28,7 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string
 #  last_sign_in_ip        :string
-#  admin                  :string           default("f"), not null
-#  boolean                :string           default("f"), not null
+#  is_admin               :boolean          default(FALSE), not null
 #
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
