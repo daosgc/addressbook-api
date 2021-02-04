@@ -14,4 +14,8 @@ class Organization < ApplicationRecord
     has_many :employees
     has_many :users, through: :employees
   end
+
+  begin :validations
+    validates :business_name, :legal_representative, presence: true
+  end
 end
