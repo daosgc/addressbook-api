@@ -36,4 +36,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
+
+  begin :relationships
+    has_many :employees
+    has_many :companies, through: :employees
+  end
 end
