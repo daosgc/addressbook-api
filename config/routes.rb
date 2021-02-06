@@ -10,6 +10,10 @@ Rails.application.routes.draw do
       }
     )
     resources :users
-    resources :organizations
+    resources :organizations, only: [:create, :update, :index] do
+      member do
+        resources :contacts, only: [:create, :update, :index], :controller => "organization_contacts"
+      end
+    end
   end
 end

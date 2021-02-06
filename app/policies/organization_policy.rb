@@ -17,16 +17,4 @@ class OrganizationPolicy < ApplicationPolicy
   def update?
     @user.is_admin
   end
-
-
-  class Scope
-    def initialize(user, scope)
-      @user  = user
-      @scope = scope
-    end
-
-    private
-
-    attr_reader :user, :scope
-  end
 end
