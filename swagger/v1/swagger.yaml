@@ -1,0 +1,70 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/organizations/{organization_id}/contacts":
+    parameters:
+    - name: organization_id
+      in: path
+      description: organization_id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: list organization_contacts
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create organization_contact
+      responses:
+        '200':
+          description: successful
+  "/api/organizations/{organization_id}/contacts/{id}":
+    parameters:
+    - name: organization_id
+      in: path
+      description: organization_id
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    patch:
+      summary: update organization_contact
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update organization_contact
+      responses:
+        '200':
+          description: successful
+  "/api/organizations":
+    get:
+      summary: list organizations
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create organization
+      responses:
+        '200':
+          description: successful
+  "/api/users":
+    get:
+      summary: list users
+      responses:
+        '200':
+          description: successful
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
