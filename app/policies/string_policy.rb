@@ -6,7 +6,7 @@ class StringPolicy < ApplicationPolicy
     @organization_id = organization_id
   end
 
-  def index?
+  def authorize?
     @employee = Employee.where(
       organization_id: organization_id,
       user: user

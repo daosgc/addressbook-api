@@ -9,8 +9,8 @@ Rails.application.routes.draw do
         registrations: 'auth/registrations',
       }
     )
-    resources :users
-    resources :organizations, only: [:create, :update, :index] do
+    resources :users, only: [:index]
+    resources :organizations, param: :organization_id, only: [:create, :index] do
       member do
         resources :contacts, only: [:create, :update, :index], :controller => "organization_contacts"
       end
