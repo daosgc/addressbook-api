@@ -8,5 +8,5 @@
 - run `rake db:create`
 - run `rake db:migrate`
 
-### Development
+### Deployment
 https://dg-addressbook-api.herokuapp.com/
