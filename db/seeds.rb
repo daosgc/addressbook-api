@@ -10,5 +10,22 @@ admin = User.create(
   name: 'admin',
   email: 'admin@example.com',
   password: '123456789',
-  admin: true
+  is_admin: true
+)
+
+user_account = User.create(
+  name: 'user',
+  email: 'user@example.com',
+  password: '123456789'
+)
+
+organization = Organization.create(
+  economic_activity: 'Restaurant',
+  business_name: 'The Krusty krab.',
+  legal_representative: "Mr. Krabs"
+)
+
+Employee.create(
+  user: user_account,
+  organization: organization
 )

@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_04_143706) do
+ActiveRecord::Schema.define(version: 2021_02_04_223713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "employees", force: :cascade do |t|
+    t.bigint "organization_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["organization_id"], name: "index_employees_on_organization_id"
+    t.index ["user_id"], name: "index_employees_on_user_id"
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "business_name"
+    t.string "legal_representative"
+    t.string "economic_activity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -39,12 +56,13 @@ ActiveRecord::Schema.define(version: 2021_02_04_143706) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "admin", default: "f", null: false
-    t.string "boolean", default: "f", null: false
+    t.boolean "is_admin", default: false, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "employees", "organizations"
+  add_foreign_key "employees", "users"
 end
